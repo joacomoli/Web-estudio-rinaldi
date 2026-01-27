@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Derecho Deportivo - Estudio Rinaldi">
+    <title>Derecho Deportivo - Estudio Rinaldi</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="../index.html" class="logo">
+                    <img src="../logo.png" alt="Estudio Rinaldi" class="logo-img">
+                </a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../index.html#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="../index.html#quienes-somos" class="nav-link">Quiénes Somos</a></li>
+                    <li><a href="../index.html#areas" class="nav-link">Áreas de Práctica</a></li>
+                    <li><a href="../index.html#areas" class="nav-link">Áreas de Práctica</a></li>
+                    <li><a href="../index.html#profesionales" class="nav-link">Profesionales</a></li>
+                    <li><a href="../index.html#marcas" class="nav-link">Nuestros Clientes</a></li>
+                    <li><a href="../index.html#contacto" class="nav-link">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section section-header-page" style="padding-top: 120px;">
+        <div class="container">
+            <div class="section-header">
+                <h1 class="section-title">Derecho Deportivo</h1>
+                <div class="title-underline"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="area-practice-single">
+                <div class="area-practice-content">
+                    <p>Brindamos asesoramiento vinculado a todo el mundo del deporte y a sus principales protagonistas. Nuestra actividad en esta especialización abarca una amplia gama de servicios que incluyen asesoramiento y planificación de eventos, negociación de contratos con clubes, representantes y sponsors, gestiones y reclamos ante los distintos organismos nacionales e internacionales del deporte, elaboración y gestión de contratos publicitarios y de sponsorización, asesoramiento legal a profesionales y jugadores, asistencia a inversores, agentes y profesionales en el área deportiva, producción de eventos, cesión de derechos televisivos, licencias y marketing relacionados al deporte y el espectáculo, entre otros. Hemos tenido activa participación en diversos litigios internacionales, en varios países, relacionados con el derecho deportivo.</p>
+                </div>
+                
+                <div class="recommended-partner" id="recommendedPartner" style="display: none;">
+                    <h2 class="section-title">Socio Recomendado</h2>
+                    <div class="title-underline"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Formulario de Contacto -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Consultar sobre esta área</h2>
+                <div class="title-underline"></div>
+                <p class="section-subtitle">Complete el formulario y nos pondremos en contacto con usted</p>
+            </div>
+            <div class="contact-form-wrapper-area">
+                <form id="contactFormArea" class="contact-form" action="../php/contact.php" method="POST">
+                    <input type="hidden" name="area_practica" value="Derecho Deportivo">
+                    <div class="form-group">
+                        <label for="nombre-area">Nombre *</label>
+                        <input type="text" id="nombre-area" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email-area">Email *</label>
+                        <input type="email" id="email-area" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono-area">Teléfono</label>
+                        <input type="tel" id="telefono-area" name="telefono">
+                    </div>
+                    <div class="form-group">
+                        <label for="asunto-area">Asunto *</label>
+                        <input type="text" id="asunto-area" name="asunto" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje-area">Mensaje *</label>
+                        <textarea id="mensaje-area" name="mensaje" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar Consulta</button>
+                    <div id="formMessageArea" class="form-message"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../logo.png" alt="Estudio Rinaldi">
+                </div>
+                <div class="footer-text">
+                    <p>&copy; 2024 Estudio Rinaldi - Abogados de Negocios. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactFormArea = document.getElementById('contactFormArea');
+            const formMessageArea = document.getElementById('formMessageArea');
+            if (contactFormArea) {
+                contactFormArea.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const formData = new FormData(contactFormArea);
+                    formMessageArea.textContent = 'Enviando...';
+                    formMessageArea.className = 'form-message';
+                    formMessageArea.style.display = 'block';
+                    fetch('../php/contact.php', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            formMessageArea.textContent = '¡Consulta enviada correctamente! Nos pondremos en contacto contigo pronto.';
+                            formMessageArea.className = 'form-message success';
+                            contactFormArea.reset();
+                        } else {
+                            formMessageArea.textContent = data.message || 'Error al enviar la consulta. Por favor, intenta nuevamente.';
+                            formMessageArea.className = 'form-message error';
+                        }
+                    })
+                    .catch(error => {
+                        formMessageArea.textContent = 'Error de conexión. Por favor, intenta nuevamente más tarde.';
+                        formMessageArea.className = 'form-message error';
+                        console.error('Error:', error);
+                    });
+                });
+            }
+        });
+    </script>
+</html>
+
