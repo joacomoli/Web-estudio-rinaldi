@@ -24,7 +24,7 @@
         <div class="container">
             <div class="nav-wrapper">
                 <a href="#inicio" class="logo" aria-label="Estudio Rinaldi - Inicio">
-                    <img src="logo.png" alt="Estudio Rinaldi" class="logo-img" width="120" height="50" loading="eager">
+                    <img src="logo.png" alt="Estudio Rinaldi" class="logo-img" width="140" height="70" loading="eager">
                 </a>
                 <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
                     <span></span>
@@ -45,9 +45,14 @@
 
     <!-- Hero Section -->
     <section id="inicio" class="hero">
-        <video class="hero-video" autoplay muted loop playsinline>
-            <source src="video-hero.mp4" type="video/mp4">
-        </video>
+        <div class="hero-videos" aria-hidden="true">
+            <video class="hero-video active" muted playsinline preload="auto">
+                <source src="iStock-1392742581.mp4" type="video/mp4">
+            </video>
+            <video class="hero-video" muted playsinline preload="auto">
+                <source src="iStock-2234384883.mp4" type="video/mp4">
+            </video>
+        </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 class="hero-title">Estudio Rinaldi</h1>

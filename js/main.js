@@ -1,4 +1,40 @@
 // ============================================
+// HERO - ROTACIÓN DE VIDEOS DE FONDO
+// ============================================
+
+function initHeroVideos() {
+    const videos = document.querySelectorAll('.hero-video');
+    if (videos.length === 0) return;
+
+    function switchToVideo(index) {
+        videos.forEach(function(video, i) {
+            if (i === index) {
+                video.classList.add('active');
+                video.currentTime = 0;
+                video.play().catch(function() {});
+            } else {
+                video.classList.remove('active');
+                video.pause();
+            }
+        });
+    }
+
+    videos.forEach(function(video, index) {
+        video.addEventListener('ended', function() {
+            switchToVideo((index + 1) % videos.length);
+        });
+    });
+
+    switchToVideo(0);
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeroVideos);
+} else {
+    initHeroVideos();
+}
+
+// ============================================
 // NAVEGACIÓN Y MENÚ MÓVIL
 // ============================================
 
